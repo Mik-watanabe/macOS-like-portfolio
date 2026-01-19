@@ -1,8 +1,9 @@
-import { dockApps } from "@constants";
+import { dockApps, type WindowId } from "@constants";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { Tooltip } from "react-tooltip";
 import gsap from "gsap";
+import useWindowStore from "@store/window";
 
 type AnimateIconProps = {
   icon: HTMLButtonElement;
@@ -12,6 +13,7 @@ type AnimateIconProps = {
 };
 
 const Dock = () => {
+  const { openWindow, closeWindow, windows } = useWindowStore();
   const dockRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
@@ -65,8 +67,22 @@ const Dock = () => {
     };
   }, []);
 
-  const toggleApp = ({ id, canOpen }: { id: string; canOpen: boolean }) => {
-    console.log(id, canOpen);
+  const toggleApp = ({
+    id,
+    canOpen,
+  }: {
+    id: WindowId | "trash";
+    canOpen: boolean;
+  }) => { 
+    if (!canOpen || id === "trash") {
+      return;
+    }
+    const w = windows[id];
+    if (w.isOpen) {
+        closeWindow(id);
+    } else {
+        openWindow(id);
+    }
   };
 
   return (

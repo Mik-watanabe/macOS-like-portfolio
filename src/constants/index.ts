@@ -34,48 +34,72 @@ const navIcons: NavIconType[] = [
 ];
 
 type dockAppType = {
-    id: string;
+    id: WindowId | "trash";
     name: string;
     icon: string;
     canOpen: boolean;
 }
 const dockApps: dockAppType[] = [
-  {
-    id: "finder",
-    name: "Portfolio", // was "Finder"
-    icon: "finder.png",
-    canOpen: true,
-  },
-  {
-    id: "safari",
-    name: "Articles", // was "Safari"
-    icon: "safari.png",
-    canOpen: true,
-  },
-  {
-    id: "photos",
-    name: "Gallery", // was "Photos"
-    icon: "photos.png",
-    canOpen: true,
-  },
-  {
-    id: "contact",
-    name: "Contact", // or "Get in touch"
-    icon: "contact.png",
-    canOpen: true,
-  },
-  {
-    id: "terminal",
-    name: "Skills", // was "Terminal"
-    icon: "terminal.png",
-    canOpen: true,
-  },
-  {
-    id: "trash",
-    name: "Archive", // was "Trash"
-    icon: "trash.png",
-    canOpen: false,
-  },
+    {
+        id: "finder",
+        name: "Portfolio", // was "Finder"
+        icon: "finder.png",
+        canOpen: true,
+    },
+    {
+        id: "safari",
+        name: "Articles", // was "Safari"
+        icon: "safari.png",
+        canOpen: true,
+    },
+    {
+        id: "photos",
+        name: "Gallery", // was "Photos"
+        icon: "photos.png",
+        canOpen: true,
+    },
+    {
+        id: "contact",
+        name: "Contact", // or "Get in touch"
+        icon: "contact.png",
+        canOpen: true,
+    },
+    {
+        id: "terminal",
+        name: "Skills", // was "Terminal"
+        icon: "terminal.png",
+        canOpen: true,
+    },
+    {
+        id: "trash",
+        name: "Archive", // was "Trash"
+        icon: "trash.png",
+        canOpen: false,
+    },
 ];
 
 export { navLinks, navIcons, dockApps };
+
+const INITIAL_Z_INDEX = 1000;
+
+type WindowState<T = unknown> = {
+    isOpen: boolean;
+    zIndex: number;
+    data: T | null;
+}
+
+type WindowId = "finder" | "contact" | "resume" | "safari" | "photos" | "terminal" | "txtfile" | "imgfile";
+type WindowConfig = Record<WindowId, WindowState>;
+
+const WINDOW_CONFIG: WindowConfig = {
+    finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    resume: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    safari: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    photos: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+    imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+};
+
+export { INITIAL_Z_INDEX, WINDOW_CONFIG, type WindowConfig, type WindowState, type WindowId };
