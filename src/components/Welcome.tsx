@@ -32,7 +32,7 @@ const setupTextHover = (
   container: HTMLElement | null,
   type: FontWeightType,
 ) => {
-  if (!container) return;
+  if (!container) return () => {};
 
   const letters = container.querySelectorAll("span");
   const { min, max, default: base } = FONT_WEIGHT[type];
