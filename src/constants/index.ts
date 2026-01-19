@@ -103,3 +103,28 @@ const WINDOW_CONFIG: WindowConfig = {
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG, type WindowConfig, type WindowState, type WindowId };
+
+const techStack = [
+    {
+        category: "Frontend",
+        items: ["React.js", "Next.js", "TypeScript", "Vue.js"],
+    },
+    {
+        category: "Styling",
+        items: ["Tailwind CSS", "Chakra", "Sass", "CSS"],
+    },
+    {
+        category: "Backend",
+        items: ["Node.js", "Express", "NestJS", "Ruby on Rails", "supabase"],
+    },
+    {
+        category: "Database",
+        items: ["MongoDB", "PostgreSQL"],
+    },
+    {
+        category: "Dev Tools",
+        items: ["Git", "GitHub", "Docker"],
+    },
+];
+
+export { techStack }
