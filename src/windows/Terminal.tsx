@@ -6,55 +6,59 @@ import { Check, Flag } from "lucide-react";
 const Terminal = () => {
   return (
     <>
-    <div id="window-header">
+      <div id="window-header">
         <WindowControls target="terminal" />
         <h2>Tech Stack</h2>
-    </div>
+      </div>
 
-    <div className="techstack">
+      <div className="techstack">
         <p>
-            <span className="font-bold">mikuwatanabe@portfolio % </span>
-            show tech stack
+          <span className="font-bold">mikuwatanabe@portfolio % </span>
+          show tech stack
         </p>
 
         <div className="label">
-            <p className="w-32">Category</p>
-            <p>Technologies</p>
+          <p className="w-32">Category</p>
+          <p>Technologies</p>
         </div>
 
         <ul className="content">
-            {techStack.map(({category, items}) => (
-                <li key={category} className="item">
-                    <Check className="check" size={20} />
-                    <h3>{category}</h3>
+          {techStack.map(({ category, items }) => (
+            <li key={category} className="item">
+              <Check className="check" size={20} />
+              <h3>{category}</h3>
 
-                    <ul>
-                        {items.map((item,i) => (
-                            <li key={i}>
-                                {item}
-                                {i < items.length - 1 && "," }
-                            </li>
-                        ))}
-                    </ul>
-                </li>
-            ))}
+              <ul>
+                {items.map((item, i) => (
+                  <li key={i}>
+                    {item}
+                    {i < items.length - 1 && ","}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
         </ul>
 
         <div className="footnote">
-            <p>
-                 <Check size={20} /> {techStack.length} of {techStack.length} stacks loaded successfully (100%)
-            </p>
+          <p>
+            <Check size={20} /> {techStack.length} of {techStack.length} stacks
+            loaded successfully (100%)
+          </p>
 
-            <p className="text-black">
-                <Flag size={15} fill="black"/>
-                Render time: 5.5ms
-            </p>
+          <p className="text-black">
+            <Flag size={15} fill="black" />
+            Render time: 5.5ms
+          </p>
         </div>
-    </div>
+      </div>
     </>
   );
 };
 
-const TerminalWindow = WindowWrapper({Component: Terminal, windowKey: "terminal"})
+const TerminalWindow = WindowWrapper({
+  Component: Terminal,
+  windowKey: "terminal",
+});
 
 export default TerminalWindow;

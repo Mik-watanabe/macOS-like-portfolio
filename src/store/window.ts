@@ -27,9 +27,9 @@ const useWindowStore = create<State & Action>()(
                 w.data = data ?? w.data;
                 state.nextZIndex += 1;
             }),
-        closeWindow: (key) => set((state) => {
+        closeWindow: (key) => 
+            set((state) => {
             const w = state.windows[key];
-
             w.isOpen = false;
             w.zIndex = INITIAL_Z_INDEX;
             w.data = null;
